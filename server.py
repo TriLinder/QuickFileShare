@@ -1,4 +1,5 @@
 from flask import Flask, send_file
+from addFile import getPort
 import shelve
 import os
 
@@ -21,4 +22,4 @@ def getFile(id) :
     
     return send_file(path)
 
-app.run(threaded=True, host="0.0.0.0", port=5000)
+app.run(threaded=True, host="0.0.0.0", port=getPort())

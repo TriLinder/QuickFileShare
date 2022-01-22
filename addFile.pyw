@@ -16,6 +16,8 @@ abc = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z"
 abc = abc + "," + abc.upper()
 abc = abc.split(",")
 
+sys.setrecursionlimit(99999)
+
 def getPort() :
     return port
 
@@ -81,10 +83,54 @@ def showQR(id, ip, port) :
     return "ok"
 
 
-def successWindow(id, ip, port) :
+def showAll(ip, port) :
+    list = []
+
+    s = shelve.open("database")
+    for item in s :
+        if not s[item] == "deleted" :
+            list.append("%s - %s" % (item, s[item]))
+    s.close()
+
+    if list == [] :
+        list = ["No files currently shared."]
+        noItems = True
+    else :
+        noItems = False
+
+    layout = [[sg.Listbox(list, size=(120,12), default_values=list[0])],
+                [sg.Button("Show", disabled=noItems), sg.Button("Remove", disabled=noItems), sg.Stretch(), sg.Button("Close")]]
+
+    window = sg.Window('All items', layout, no_titlebar=True, keep_on_top=True, grab_anywhere=True)
+
+    while True :
+        event, values = window.read()
+
+        id = values[0][0].split(" -")[0]
+
+        if event == "Remove" :
+            s = shelve.open("database")
+            s[id] = "deleted"
+            s.close()
+            
+            window.close()
+            return showAll(ip, port)
+
+        if event == "Show" :
+            window.close()
+            successWindow(id, ip, port, False)
+            return showAll(ip, port)
+        
+        if event == sg.WIN_CLOSED or event == 'Close' :
+            break
+
+    window.close()
+    return "quit"
+
+def successWindow(id, ip, port, allowShowAll) :
     layout = [[sg.Text('File share created!')],
             [sg.InputText(default_text=getFullAddress(id, ip, port), disabled=True)],
-            [sg.Button('Ok'), sg.Button("Show QR Code")]]
+            [sg.Button('Ok'), sg.Button("Show QR Code"), sg.Stretch(), sg.Button("Show all", disabled=not allowShowAll)]]
     
     window = sg.Window('File share', layout, no_titlebar=True, keep_on_top=True, grab_anywhere=True)
 
@@ -96,10 +142,17 @@ def successWindow(id, ip, port) :
 
             if showQR(id, ip, port) == "could not delete" :
                 sg.popup("Could not delete the QR Code file!")
+        
+        if event == "Show all" :
+            print("Showing all items..")
+            window.close()
+            showAll(ip, port)
+            return successWindow(id, ip, port, allowShowAll)
 
         if event == sg.WIN_CLOSED or event == 'Ok' :
             break
 
+    window.close()
     return "ok"
 
 def chooseFileWindow() :
@@ -124,20 +177,23 @@ def chooseFile() :
     if not path == "quit" :
         out = addFile(path, idLenght)
         if out[0] == "ok" :
-            successWindow(out[1], ip, port)
+            successWindow(out[1], ip, port, True)
         else :
             print("ERROR: %s" % (out[0]))
 
-if __name__ :
+if __name__ == "__main__" :
     args = sys.argv
+    #print(args)
+
     if len(args) == 1 :
         chooseFile()
     else :
+        os.chdir(os.path.dirname(args[0]))
         out = addFile(args[1], idLenght)
 
         if out[0] == "ok" :
             print(out[1])
             print(getFullAddress(out[1], ip, port))
-            successWindow(out[1], ip, port)
+            successWindow(out[1], ip, port, True)
         else :
             print("ERROR: %s" % (out[0]))
