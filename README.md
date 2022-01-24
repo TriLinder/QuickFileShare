@@ -40,7 +40,7 @@ python addFile.pyw "R:/MasterHacking Music/001.mp3"
 
 ‎‎‎‏‏‎ ‎
 
-**Adding to Windows Context menu:**
+**Adding to a Windows Context menu:**
 
 <img title="" src="screenshots/video.gif" alt="video.gif" width="498">
 
