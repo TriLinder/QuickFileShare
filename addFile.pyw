@@ -7,8 +7,8 @@ import sys
 import os
 
 #-------------------#
-ip = "localhost"
-port = 5000
+ip = "127.68.13.12"
+port = 6050
 idLenght = 6
 #-------------------#
 
