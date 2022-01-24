@@ -42,7 +42,7 @@ python addFile.pyw "R:/MasterHacking Music/001.mp3"
 
 **Adding to Windows Context menu:**
 
-<img src="file:///C:/Users/trili/Documents/GitHub/QuickFileShare/QuickFileShare/screenshots/video.gif" title="" alt="video.gif" width="498">
+<img title="" src="screenshots/video.gif" alt="video.gif" width="498">
 
 
 
@@ -64,19 +64,19 @@ You should be able to add a QuickShare option to the Windows context menu by cha
 
 Choosing a file when run without arguments 
 
-![ChooseFile.png](C:\Users\trili\Documents\GitHub\QuickFileShare\QuickFileShare\screenshots\ChooseFile.png)
+![ChooseFile.png](screenshots/ChooseFile.png)
 
 File share created
 
-![shareCreated.png](C:\Users\trili\Documents\GitHub\QuickFileShare\QuickFileShare\screenshots\shareCreated.png)
+![shareCreated.png](screenshots/shareCreated.png)
 
 QR Code
 
-<img src="file:///C:/Users/trili/Documents/GitHub/QuickFileShare/QuickFileShare/screenshots/QRcode.png" title="" alt="QRcode.png" width="256">
+<img title="" src="screenshots/QRcode.png" alt="QRcode.png" width="256">
 
 Share list
 
-![shareList.png](C:\Users\trili\Documents\GitHub\QuickFileShare\QuickFileShare\screenshots\shareList.png)
+![shareList.png](screenshots/shareList.png)
 
 
 
