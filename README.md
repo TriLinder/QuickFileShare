@@ -60,7 +60,7 @@ You should be able to add a QuickShare option to the Windows context menu by cha
 
 **Screenshots:**
 
-‎‎‎‏‏‎ ‎
+
 
 Choosing a file when run without arguments 
 
