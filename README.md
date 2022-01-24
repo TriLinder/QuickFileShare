@@ -32,7 +32,7 @@ idLenght = 6
 
 **Running with arguments:**
 
-`addFile.pyw` can be ran with a path argument to share files even quicker.
+`addFile.pyw` can be run with a path argument to share files even quicker.
 
 ```shell
 python addFile.pyw "R:/MasterHacking Music/001.mp3"
@@ -40,7 +40,7 @@ python addFile.pyw "R:/MasterHacking Music/001.mp3"
 
 ‎‎‎‏‏‎ ‎
 
-**Adding to a Windows Context menu:**
+**Adding to the Windows Context menu:**
 
 <img title="" src="screenshots/video.gif" alt="video.gif" width="498">
 
